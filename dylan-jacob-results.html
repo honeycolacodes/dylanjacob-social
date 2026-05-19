@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dylan Jacob — Results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0c0c0c;
+  --paper:#f2ede6;
+  --accent:#ff4d2e;
+  --muted:#9a9189;
+  --line:rgba(12,12,12,0.12);
+}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Epilogue',sans-serif;font-size:15px;line-height:1.5}
+
+/* TICKER */
+.ticker{background:var(--ink);color:var(--paper);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:9px 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-block;animation:ticker 22s linear infinite}
+.ticker-inner span{margin:0 2.5rem;color:var(--accent)}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--ink);text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-link{font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-link:hover{color:var(--ink)}
+.nav-cta{background:var(--ink);color:var(--paper);border:none;border-radius:2px;padding:9px 20px;font-family:'Epilogue',sans-serif;font-size:12px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:#1a1a1a}
+
+/* HERO */
+.results-hero{padding:4rem 2.5rem;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem}
+.results-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,90px);line-height:.95;letter-spacing:1px;margin-bottom:1rem}
+.results-h1 em{font-style:normal;color:var(--accent)}
+.results-sub{font-size:15px;font-weight:300;color:var(--muted);max-width:520px;line-height:1.7}
+
+/* BIG STATS ROW */
+.big-stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.big-stat{padding:2.5rem 2rem;border-right:1px solid var(--line)}
+.big-stat:last-child{border-right:none}
+.big-stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,58px);line-height:1;color:var(--ink);margin-bottom:.35rem}
+.big-stat-num em{font-style:normal;color:var(--accent)}
+.big-stat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);line-height:1.4}
+
+/* CLIENT SECTIONS */
+.client-section{border-bottom:1px solid var(--line)}
+.client-header{display:flex;justify-content:space-between;align-items:center;padding:2rem 2.5rem;border-bottom:1px solid var(--line);cursor:pointer}
+.client-header:hover{background:rgba(12,12,12,.02)}
+.client-left{display:flex;align-items:center;gap:1rem}
+.client-avatar{width:42px;height:42px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;color:var(--paper);flex-shrink:0}
+.client-name{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.5px}
+.client-role{font-size:12px;color:var(--muted);font-weight:300}
+.client-tag{background:var(--accent);color:#fff;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:2px;font-weight:500}
+
+/* RESULT ROWS */
+.result-rows{background:rgba(12,12,12,.015)}
+.result-row{display:grid;grid-template-columns:160px 1fr 1fr 1fr;align-items:center;padding:1.25rem 2.5rem;border-bottom:1px solid var(--line)}
+.result-row:last-child{border-bottom:none}
+.result-row:hover{background:rgba(12,12,12,.03)}
+.result-platform{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:500}
+.result-metric{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.5px;color:var(--ink)}
+.result-change{font-size:12px;font-weight:500;color:#22a05a;display:flex;align-items:center;gap:4px}
+.result-change::before{content:'↑'}
+.result-note{font-size:12px;font-weight:300;color:var(--muted);font-style:italic}
+
+/* VIRAL MOMENT */
+.viral-strip{background:var(--ink);color:var(--paper);padding:2rem 2.5rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.viral-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(244,240,235,.4);flex-shrink:0}
+.viral-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(18px,3vw,28px);letter-spacing:.5px;color:var(--paper);flex:1}
+.viral-text em{font-style:normal;color:var(--accent)}
+
+/* GROWTH TIMELINE */
+.timeline{padding:3rem 2.5rem;border-bottom:1px solid var(--line)}
+.timeline-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.timeline-rows{display:flex;flex-direction:column;gap:0}
+.tl-row{display:grid;grid-template-columns:100px 1fr auto;align-items:center;gap:1.5rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.tl-row:last-child{border-bottom:none}
+.tl-month{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:var(--muted)}
+.tl-bar-wrap{position:relative;height:6px;background:rgba(12,12,12,.08);border-radius:3px;overflow:hidden}
+.tl-bar{height:100%;background:var(--accent);border-radius:3px;transition:width .8s ease}
+.tl-num{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.5px;color:var(--ink);white-space:nowrap;min-width:90px;text-align:right}
+
+/* QUOTE */
+.quote-block{padding:4rem 2.5rem;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.quote-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:.5px}
+.quote-text em{font-style:normal;color:var(--accent)}
+.quote-right{display:flex;flex-direction:column;gap:1rem}
+.quote-detail{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7}
+
+/* CTA */
+.cta-strip{display:flex;justify-content:space-between;align-items:center;padding:3rem 2.5rem;flex-wrap:wrap;gap:1.5rem}
+.cta-strip-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,48px);letter-spacing:.5px;line-height:1}
+.cta-strip-text em{font-style:normal;color:var(--accent)}
+.cta-strip-right{display:flex;flex-direction:column;align-items:flex-end;gap:.75rem}
+.btn-primary{background:var(--accent);color:#fff;border:none;border-radius:2px;padding:13px 26px;font-family:'Epilogue',sans-serif;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:opacity .2s;display:inline-block}
+.btn-primary:hover{opacity:.9}
+.cta-email{font-size:13px;color:var(--muted);font-weight:300}
+.cta-email a{color:var(--ink);text-decoration:none;font-weight:500}
+.cta-email a:hover{color:var(--accent)}
+
+footer{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2.5rem;border-top:1px solid var(--line);flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:var(--muted)}
+.footer-copy{font-size:11px;color:rgba(12,12,12,.3)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}
+  .nav-right .nav-link{display:none}
+  .results-hero{padding:2.5rem 1.25rem}
+  .big-stats{grid-template-columns:1fr 1fr}
+  .big-stat{border-bottom:1px solid var(--line)}
+  .result-row{grid-template-columns:120px 1fr 1fr;padding:1rem 1.25rem}
+  .result-note{display:none}
+  .quote-block{grid-template-columns:1fr;gap:1.5rem;padding:2.5rem 1.25rem}
+  .cta-strip{padding:2.5rem 1.25rem;flex-direction:column;align-items:flex-start}
+  .cta-strip-right{align-items:flex-start}
+  .timeline{padding:2rem 1.25rem}
+  .viral-strip{padding:1.5rem 1.25rem}
+  .client-header{padding:1.5rem 1.25rem}
+  .result-rows .result-row{padding:1rem 1.25rem}
+  footer{padding:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    REAL RESULTS <span>✦</span> REAL CLIENTS <span>✦</span> BIG JAY OAKERSON <span>✦</span> SDR SHOW <span>✦</span> RALPH SUTTON <span>✦</span> DYLAN JACOB SOCIAL MEDIA <span>✦</span>
+    REAL RESULTS <span>✦</span> REAL CLIENTS <span>✦</span> BIG JAY OAKERSON <span>✦</span> SDR SHOW <span>✦</span> RALPH SUTTON <span>✦</span> DYLAN JACOB SOCIAL MEDIA <span>✦</span>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Dylan Jacob</a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="#contact" class="nav-cta">Work with me</a>
+  </div>
+</nav>
+
+<section class="results-hero">
+  <div class="eyebrow">Case studies · Real numbers</div>
+  <h1 class="results-h1">The numbers<br>speak for themselves.</h1>
+  <p class="results-sub">Here's what actually happened when clients handed me their accounts. Every stat below is pulled directly from platform analytics reports sent to clients monthly.</p>
+</section>
+
+<section class="big-stats">
+  <div class="big-stat">
+    <div class="big-stat-num"><em>3.5M+</em></div>
+    <div class="big-stat-label">Views in a single month<br>(SDR Show, June 2025)</div>
+  </div>
+  <div class="big-stat">
+    <div class="big-stat-num"><em>+100%</em></div>
+    <div class="big-stat-label">Instagram views increase<br>in first month (Big Jay)</div>
+  </div>
+  <div class="big-stat">
+    <div class="big-stat-num"><em>8M+</em></div>
+    <div class="big-stat-label">Facebook views<br>in one month (Big Jay)</div>
+  </div>
+  <div class="big-stat">
+    <div class="big-stat-num"><em>+1M</em></div>
+    <div class="big-stat-label">New views added<br>every month (SDR Show)</div>
+  </div>
+</section>
+
+<!-- BIG JAY -->
+<div class="client-section">
+  <div class="client-header">
+    <div class="client-left">
+      <div class="client-avatar">BJ</div>
+      <div>
+        <div class="client-name">Big Jay Oakerson</div>
+        <div class="client-role">Stand-up Comedian · @bigjayoakerson</div>
+      </div>
+    </div>
+    <div class="client-tag">Active client</div>
+  </div>
+
+  <div class="viral-strip">
+    <div class="viral-label">Viral moment</div>
+    <div class="viral-text">One clip went viral across <em>every platform simultaneously</em> — picking up reaction channels, new followers, and a wave of organic reach.</div>
+  </div>
+
+  <div class="result-rows">
+    <div class="result-row">
+      <div class="result-platform">Instagram</div>
+      <div class="result-metric">+100% Views</div>
+      <div class="result-change">86% more profile visits</div>
+      <div class="result-note">72% more external link taps → ticket sales & YouTube</div>
+    </div>
+    <div class="result-row">
+      <div class="result-platform">Facebook</div>
+      <div class="result-metric">8M+ Views</div>
+      <div class="result-change">Up 82%</div>
+      <div class="result-note">Fixed broken Instagram/Facebook integration; unlocked Meta's cross-platform growth throttle</div>
+    </div>
+    <div class="result-row">
+      <div class="result-platform">YouTube</div>
+      <div class="result-metric">+2M Views</div>
+      <div class="result-change">2,600 new subs</div>
+      <div class="result-note">Biggest single-month gain since channel launch</div>
+    </div>
+    <div class="result-row">
+      <div class="result-platform">TikTok</div>
+      <div class="result-metric">Viral clip</div>
+      <div class="result-change">Consistent growth</div>
+      <div class="result-note">Jay/Shane collab clip broke out; consistent cross-platform amplification</div>
+    </div>
+  </div>
+</div>
+
+<!-- SDR / RALPH -->
+<div class="client-section">
+  <div class="client-header">
+    <div class="client-left">
+      <div class="client-avatar">RS</div>
+      <div>
+        <div class="client-name">Ralph Sutton / SDR Show</div>
+        <div class="client-role">Podcast & Media Brand · @sdrshow</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-rows">
+    <div class="result-row">
+      <div class="result-platform">Total Views</div>
+      <div class="result-metric">3,525,463</div>
+      <div class="result-change">+1.1M vs prior month</div>
+      <div class="result-note">Growing 1M+ views per month consistently</div>
+    </div>
+    <div class="result-row">
+      <div class="result-platform">Instagram</div>
+      <div class="result-metric">1M+ Views</div>
+      <div class="result-change">First 1M video milestone</div>
+      <div class="result-note">First ever million-view video on the page achieved June 2025</div>
+    </div>
+    <div class="result-row">
+      <div class="result-platform">Facebook</div>
+      <div class="result-metric">$367 Revenue</div>
+      <div class="result-change">$300 first month monetized</div>
+      <div class="result-note">11k+ page likes, targeting 100k by year end</div>
+    </div>
+    <div class="result-row">
+      <div class="result-platform">YouTube</div>
+      <div class="result-metric">10K+ Subs</div>
+      <div class="result-change">+5K in one month</div>
+      <div class="result-note">SDR crossed 10K subscriber milestone; driven by targeted ad strategy</div>
+    </div>
+    <div class="result-row">
+      <div class="result-platform">TikTok</div>
+      <div class="result-metric">500K Views</div>
+      <div class="result-change">2nd biggest video ever</div>
+      <div class="result-note">Rob Schneider clip; avg video now 5–10K views consistently</div>
+    </div>
+  </div>
+</div>
+
+<!-- GROWTH CHART -->
+<section class="timeline">
+  <div class="timeline-label">SDR Show — Total monthly views growth</div>
+  <div class="timeline-rows">
+    <div class="tl-row">
+      <div class="tl-month">Apr 2025</div>
+      <div class="tl-bar-wrap"><div class="tl-bar" style="width:56%"></div></div>
+      <div class="tl-num">1,971,002</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-month">May 2025</div>
+      <div class="tl-bar-wrap"><div class="tl-bar" style="width:67%"></div></div>
+      <div class="tl-num">2,369,470</div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-month">Jun 2025</div>
+      <div class="tl-bar-wrap"><div class="tl-bar" style="width:100%"></div></div>
+      <div class="tl-num">3,525,463</div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-block">
+  <div class="quote-text">"Big first month.<br><em>Bigger things</em><br>ahead."</div>
+  <div class="quote-right">
+    <div class="quote-detail">Written to Big Jay's team after month one — 100% Instagram view increase, 8M+ Facebook views, and 2M+ new YouTube views. Sent to Jay Oakerson, his manager at Levity Talent, and his booking agent.</div>
+    <div class="quote-detail">Dylan manages strategy, posting, platform integration, content selection, caption writing, and monthly analytics reporting — completely hands-off for the client.</div>
+  </div>
+</section>
+
+<section class="cta-strip" id="contact">
+  <div class="cta-strip-text">Want numbers<br>like <em>these?</em></div>
+  <div class="cta-strip-right">
+    <a href="mailto:dylanjnegri@gmail.com" class="btn-primary">Get in touch</a>
+    <div class="cta-email">Or email directly: <a href="mailto:dylanjnegri@gmail.com">dylanjnegri@gmail.com</a></div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Dylan Jacob</span>
+  <span class="footer-copy">© 2026 — Results page · All stats from verified client analytics reports</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dylan Jacob — Social Media Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#0c0c0c;
+  --paper:#f2ede6;
+  --accent:#ff4d2e;
+  --muted:#9a9189;
+  --line:rgba(12,12,12,0.12);
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Epilogue',sans-serif;
+  font-size:15px;
+  line-height:1.5;
+}
+
+/* TICKER */
+.ticker{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:13px;
+  letter-spacing:2px;
+  padding:9px 0;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.ticker-inner{
+  display:inline-block;
+  animation:ticker 22s linear infinite;
+}
+.ticker-inner span{margin:0 2.5rem;color:var(--accent)}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1.1rem 2.5rem;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  background:var(--paper);
+  z-index:100;
+}
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22px;
+  letter-spacing:1px;
+  color:var(--ink);
+  text-decoration:none;
+}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-link{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-decoration:none;
+  transition:color .2s;
+}
+.nav-link:hover{color:var(--ink)}
+.nav-cta{
+  background:var(--ink);
+  color:var(--paper);
+  border:none;
+  border-radius:2px;
+  padding:9px 20px;
+  font-family:'Epilogue',sans-serif;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.5px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .2s;
+}
+.nav-cta:hover{background:#1a1a1a}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:88vh;
+  border-bottom:1px solid var(--line);
+}
+.hero-left{
+  padding:4rem 2.5rem;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.hero-right{
+  padding:4rem 2.5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-right::before{
+  content:'';
+  position:absolute;
+  width:420px;height:420px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  animation:spin 30s linear infinite;
+}
+.hero-right::after{
+  content:'';
+  position:absolute;
+  width:260px;height:260px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  animation:spin 18s linear infinite reverse;
+}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  animation:fadeUp .5s ease both;
+}
+.badge-dot{
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--accent);
+  animation:pulse 2s ease infinite;
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,77,46,.4)}50%{box-shadow:0 0 0 6px rgba(255,77,46,0)}}
+
+.hero-h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(64px,8vw,110px);
+  line-height:.95;
+  letter-spacing:1px;
+  margin:2rem 0 0;
+  animation:fadeUp .5s .1s ease both;
+}
+.hero-h1 em{
+  font-style:normal;
+  color:var(--accent);
+  display:block;
+}
+
+.hero-sub{
+  font-size:14px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--muted);
+  margin-top:1.1rem;
+  animation:fadeUp .5s .2s ease both;
+  letter-spacing:0.3px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.hero-sub::before{
+  content:'';
+  display:inline-block;
+  width:28px;
+  height:1px;
+  background:var(--accent);
+  flex-shrink:0;
+}
+
+.hero-actions{
+  display:flex;
+  gap:10px;
+  margin-top:2rem;
+  animation:fadeUp .5s .3s ease both;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:2px;
+  padding:13px 26px;
+  font-family:'Epilogue',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  cursor:pointer;
+  text-decoration:none;
+  transition:opacity .2s,transform .15s;
+  display:inline-block;
+}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+
+.btn-ghost{
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:2px;
+  padding:13px 26px;
+  font-family:'Epilogue',sans-serif;
+  font-size:13px;
+  font-weight:400;
+  cursor:pointer;
+  text-decoration:none;
+  transition:border-color .2s,transform .15s;
+  display:inline-block;
+}
+.btn-ghost:hover{border-color:rgba(12,12,12,.35);transform:translateY(-1px)}
+
+.hero-stat-stack{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+}
+.hero-stat{display:flex;flex-direction:column;gap:4px}
+.stat-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:52px;
+  line-height:1;
+  color:var(--ink);
+}
+.stat-label{
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.proof-block{
+  position:relative;
+  z-index:2;
+  margin-top:3rem;
+  padding-top:2rem;
+  border-top:1px solid var(--line);
+}
+.proof-eyebrow{
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:.75rem;
+}
+.proof-client{display:flex;align-items:center;gap:12px}
+.proof-avatar{
+  width:38px;height:38px;
+  border-radius:50%;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:13px;
+  letter-spacing:1px;
+  color:var(--paper);
+  flex-shrink:0;
+}
+.proof-name{font-weight:500;font-size:14px}
+.proof-handle{font-size:12px;color:var(--muted)}
+
+/* MARQUEE */
+.marquee-row{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:1rem 0;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.marquee-inner{
+  display:inline-block;
+  animation:ticker 18s linear infinite;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:14px;
+  letter-spacing:3px;
+  color:var(--muted);
+}
+.marquee-inner .dot{color:var(--accent);margin:0 1.5rem}
+
+/* SERVICES */
+.services{border-bottom:1px solid var(--line)}
+.services-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:2rem 2.5rem 1.5rem;
+  border-bottom:1px solid var(--line);
+}
+.section-label{
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.section-count{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:1px;
+}
+
+.service-row{
+  display:grid;
+  grid-template-columns:3rem 1fr 1fr;
+  align-items:start;
+  padding:1.75rem 2.5rem;
+  border-bottom:1px solid var(--line);
+  transition:background .2s;
+  gap:2rem;
+}
+.service-row:last-child{border-bottom:none}
+.service-row:hover{background:rgba(12,12,12,.03)}
+
+.svc-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:1px;
+  padding-top:3px;
+}
+.svc-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;
+  letter-spacing:.5px;
+  line-height:1.1;
+  color:var(--ink);
+}
+.svc-desc{
+  font-size:13px;
+  font-weight:300;
+  color:var(--muted);
+  line-height:1.65;
+  padding-top:5px;
+}
+
+/* PLATFORMS */
+.platforms{
+  display:flex;
+  align-items:stretch;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.plat-label{
+  padding:1.25rem 2.5rem;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--muted);
+  border-right:1px solid var(--line);
+  white-space:nowrap;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+}
+.plat-list{display:flex;flex-wrap:wrap}
+.plat{
+  padding:1.25rem 1.75rem;
+  font-size:12px;
+  font-weight:400;
+  color:var(--muted);
+  border-right:1px solid var(--line);
+  transition:color .2s,background .2s;
+  white-space:nowrap;
+  display:flex;
+  align-items:center;
+}
+.plat:hover{color:var(--ink);background:rgba(12,12,12,.03)}
+
+/* CTA */
+.cta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--line);
+}
+.cta-left{
+  padding:5rem 2.5rem;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.cta-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(48px,6vw,80px);
+  line-height:.95;
+  letter-spacing:1px;
+  margin-bottom:1.5rem;
+}
+.cta-h em{font-style:normal;color:var(--accent)}
+.cta-sub{
+  font-size:14px;
+  font-weight:300;
+  color:var(--muted);
+  margin-bottom:2.5rem;
+  max-width:320px;
+  line-height:1.7;
+}
+
+.cta-right{
+  padding:5rem 2.5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:1.5rem;
+}
+.cta-email-label{
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:.4rem;
+}
+.cta-email{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(22px,3vw,36px);
+  color:var(--ink);
+  text-decoration:none;
+  letter-spacing:.5px;
+  transition:color .2s;
+  word-break:break-all;
+  display:block;
+}
+.cta-email:hover{color:var(--accent)}
+.cta-divider{width:40px;height:1px;background:var(--line)}
+.cta-note{font-size:12px;font-weight:300;color:var(--muted);font-style:italic}
+
+/* FOOTER */
+footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1.25rem 2.5rem;
+  flex-wrap:wrap;
+  gap:1rem;
+}
+.footer-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:16px;
+  letter-spacing:1px;
+  color:var(--muted);
+}
+.footer-copy{font-size:11px;color:rgba(12,12,12,.3)}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:2.5rem 1.25rem;min-height:90vh}
+  nav{padding:1rem 1.25rem}
+  .nav-right .nav-link{display:none}
+  .services-header{padding:1.5rem 1.25rem}
+  .service-row{grid-template-columns:2.5rem 1fr;padding:1.5rem 1.25rem;gap:1rem}
+  .svc-desc{display:none}
+  .platforms{flex-wrap:wrap}
+  .plat-label{width:100%;border-right:none;border-bottom:1px solid var(--line);padding:1rem 1.25rem}
+  .cta{grid-template-columns:1fr}
+  .cta-left{padding:3rem 1.25rem;border-right:none;border-bottom:1px solid var(--line)}
+  .cta-right{padding:2.5rem 1.25rem}
+  footer{padding:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    SOCIAL MEDIA MANAGEMENT <span>✦</span> CONTENT STRATEGY <span>✦</span> BRAND GROWTH <span>✦</span> ACCOUNT MANAGEMENT <span>✦</span> ANALYTICS <span>✦</span> DYLAN JACOB <span>✦</span>
+    SOCIAL MEDIA MANAGEMENT <span>✦</span> CONTENT STRATEGY <span>✦</span> BRAND GROWTH <span>✦</span> ACCOUNT MANAGEMENT <span>✦</span> ANALYTICS <span>✦</span> DYLAN JACOB <span>✦</span>
+  </div>
+</div>
+
+<nav>
+  <a href="#" class="nav-logo">Dylan Jacob</a>
+  <div class="nav-right">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="#contact" class="nav-cta">Work with me</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Now taking clients
+      </div>
+      <h1 class="hero-h1">Social media<br>for people with<br><em>better things to do.</em></h1>
+      <p class="hero-sub">Content that works while you don't.</p>
+    </div>
+    <div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Let's talk</a>
+        <a href="dylan-jacob-results.html" class="btn-ghost">See my work</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stat-stack">
+      <div class="hero-stat">
+        <span class="stat-num">All</span>
+        <span class="stat-label">Major platforms covered</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Hands-off for you</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">1–2</span>
+        <span class="stat-label">Spots available now</span>
+      </div>
+    </div>
+    <div class="proof-block">
+      <div class="proof-eyebrow">Trusted by</div>
+      <div class="proof-client">
+        <div class="proof-avatar">BJ</div>
+        <div>
+          <div class="proof-name">Big Jay Oakerson</div>
+          <div class="proof-handle">Comedian · @bigjayoakerson</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-row">
+  <div class="marquee-inner">
+    INSTAGRAM <span class="dot">✦</span> TIKTOK <span class="dot">✦</span> TWITTER / X <span class="dot">✦</span> YOUTUBE <span class="dot">✦</span> FACEBOOK <span class="dot">✦</span> LINKEDIN <span class="dot">✦</span>
+    INSTAGRAM <span class="dot">✦</span> TIKTOK <span class="dot">✦</span> TWITTER / X <span class="dot">✦</span> YOUTUBE <span class="dot">✦</span> FACEBOOK <span class="dot">✦</span> LINKEDIN <span class="dot">✦</span>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="services-header">
+    <span class="section-label">Services</span>
+    <span class="section-count">04 OFFERINGS</span>
+  </div>
+  <div class="service-row">
+    <span class="svc-num">01</span>
+    <div class="svc-title">Content Strategy</div>
+    <p class="svc-desc">Full content calendars built around your audience and goals — nothing generic, nothing copy-pasted. Every post has a reason to exist.</p>
+  </div>
+  <div class="service-row">
+    <span class="svc-num">02</span>
+    <div class="svc-title">Account Management</div>
+    <p class="svc-desc">Daily posting, engagement, and community management across every platform. You won't have to think about it once.</p>
+  </div>
+  <div class="service-row">
+    <span class="svc-num">03</span>
+    <div class="svc-title">Brand Voice</div>
+    <p class="svc-desc">Captions and copy that actually sound like you. Your personality, amplified — not replaced by some generic AI tone.</p>
+  </div>
+  <div class="service-row">
+    <span class="svc-num">04</span>
+    <div class="svc-title">Growth & Analytics</div>
+    <p class="svc-desc">Monthly reporting and data-driven strategy adjustments. No fluff — just what's working, what isn't, and what's next.</p>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-left">
+    <h2 class="cta-h">Ready<br>to <em>grow?</em></h2>
+    <p class="cta-sub">Currently taking on 1–2 new clients. If you're tired of running your own socials — or tired of them running you — let's talk.</p>
+    <a href="mailto:dylanjnegri@gmail.com" class="btn-primary">Get in touch</a>
+  </div>
+  <div class="cta-right">
+    <div>
+      <div class="cta-email-label">Email</div>
+      <a href="mailto:dylanjnegri@gmail.com" class="cta-email">dylanjnegri@gmail.com</a>
+    </div>
+    <div class="cta-divider"></div>
+    <div>
+      <div class="cta-email-label">Instagram</div>
+      <a href="#" class="cta-email">@dylanjnegri</a>
+    </div>
+    <p class="cta-note">Usually responds same day.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Dylan Jacob</span>
+  <span class="footer-copy">© 2026 — Social Media Management</span>
+</footer>
+
+</body>
+</html>
